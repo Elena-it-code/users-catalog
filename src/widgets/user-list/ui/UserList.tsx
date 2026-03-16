@@ -1,5 +1,5 @@
 import s from './UserList.module.css'
-import {type User, UserCard} from "@/src/entities";
+import {type User, UserCard} from "@/entities";
 
 type UserListProps = {
     users: User[]

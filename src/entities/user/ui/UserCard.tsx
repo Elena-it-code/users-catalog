@@ -1,5 +1,5 @@
 import s from './UserCard.module.css';
-import type {User} from "@/src/entities";
+import type {User} from "@/entities";
 
 
 type UserCardProps = {

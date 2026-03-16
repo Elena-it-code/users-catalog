@@ -1,4 +1,4 @@
-import {UserList} from "@/src/widgets";
+import {UserList} from "@/widgets";
 
 
 function App() {
