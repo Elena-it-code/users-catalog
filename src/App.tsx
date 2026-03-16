@@ -1,159 +1,27 @@
-import {UserList} from "@/widgets";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchUsers } from '@/entities/user/model/userSlice.ts';
+import type { AppDispatch, RootState } from '@/app/store.ts';
+import { UserList } from '@/widgets/user-list';
 
 function App() {
-    const usersData = [
-        {
-            id: 1,
-            name: "Leanne Graham",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
+  const dispatch = useDispatch<AppDispatch>();
+  const { users, isLoading, error } = useSelector(
+    (state: RootState) => state.users,
+  );
 
-            }
-        },
-        {
-            id: 2,
-            name: "Ervin Howell",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, []);
 
-            }
-        },
-        {
-            id: 3,
-            name: "Patricia Lebsack",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
+  if (isLoading) return <h1>Loading...</h1>;
+  if (error) return <h1>Error: {error}</h1>;
 
-            }
-        },
-        {
-            id: 4,
-            name: "Chelsey Dietrich",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
-
-            }
-        },
-        {
-            id: 5,
-            name: "Clementine Bauch",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
-
-            }
-        },
-        {
-            id: 6,
-            name: "Mrs. Dennis Schulist",
-            username: "Bret",
-            email: "Sincere@april.biz",
-            address: {
-                street: "Kulas Light",
-                suite: "Apt. 556",
-                city: "Gwenborough",
-                zipcode: "92998-3874",
-                geo: {
-                    lat: "-37.3159",
-                    lng: "81.1496"
-                }
-            },
-            phone: "1-770-736-8031 x56442",
-            website: "hildegard.org",
-            company: {
-                name: "Romaguera-Crona",
-                catchPhrase: "Multi-layered client-server neural-net",
-                bs: "harness real-time e-markets"
-
-            }
-        },
-    ];
-
-    return (
-        <>
-            <UserList users={usersData}/>
-        </>
-    )
+  return (
+    <div className="app">
+      <UserList users={users} />
+    </div>
+  );
 }
 
-export default App
+export default App;
