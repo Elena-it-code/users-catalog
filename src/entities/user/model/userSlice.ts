@@ -1,5 +1,9 @@
 import type { User } from '@/entities';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {
+  createAsyncThunk,
+  createSlice,
+  type PayloadAction,
+} from '@reduxjs/toolkit';
 
 export const BASE_URL = 'https://jsonplaceholder.typicode.com';
 
@@ -23,7 +27,11 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 export const userSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    deleteUser: (state, action: PayloadAction<number>) => {
+      state.users = state.users.filter((user) => user.id !== action.payload);
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -42,3 +50,4 @@ export const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
+export const { deleteUser } = userSlice.actions;
