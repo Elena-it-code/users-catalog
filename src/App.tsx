@@ -1,4 +1,5 @@
-import {UserList} from "./src/widgets/user-list/ui/UserList.tsx";
+import {UserList} from "@/src/widgets";
+
 
 function App() {
     const usersData = [

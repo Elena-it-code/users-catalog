@@ -1,6 +1,5 @@
-import type {User} from "../../../entities/user/model/types.ts";
 import s from './UserList.module.css'
-import {UserCard} from "../../../entities/user/ui/UserCard.tsx";
+import {type User, UserCard} from "@/src/entities";
 
 type UserListProps = {
     users: User[]

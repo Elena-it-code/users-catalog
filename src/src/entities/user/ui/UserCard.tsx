@@ -1,5 +1,6 @@
-import type {User} from "../model/types.ts";
 import s from './UserCard.module.css';
+import type {User} from "@/src/entities";
+
 
 type UserCardProps = {
     user: User
