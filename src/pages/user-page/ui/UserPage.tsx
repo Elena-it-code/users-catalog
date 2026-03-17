@@ -31,14 +31,24 @@ export const UserPage = () => {
 
       <div className={s.content}>
         <h1>{user.name}</h1>
-        <p>Email: {user.email}</p>
-        <p>Phone: {user.phone}</p>
-        <p>Website: {user.website}</p>
-        <p>Company: {user.company.name}</p>
-        <p>City: {user.address.city}</p>
+        <p>
+          <span className={s.label}>Email:</span> {user.email}
+        </p>
+        <p>
+          <span className={s.label}>Phone:</span> {user.phone}
+        </p>
+        <p>
+          <span className={s.label}>Website:</span> {user.website}
+        </p>
+        <p>
+          <span className={s.label}>Company:</span> {user.company.name}
+        </p>
+        <p>
+          <span className={s.label}>City:</span> {user.address.city}
+        </p>
 
         <button onClick={deleteUserHandler} className={s.deleteBtn}>
-          Delete
+          Delete User
         </button>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import s from './MainPage.module.css';
 import { UserList } from '@/widgets/user-list';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '@/app/store.ts';
@@ -32,23 +33,34 @@ export const MainPage = () => {
   if (error) return <h1>Error: {error}</h1>;
 
   return (
-    <div>
-      <input
-        placeholder="Search by name..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-
-      <select value={sort} onChange={(e) => setSort(e.target.value)}>
-        <option value="">Sort by</option>
-        <option value="asc">Name (A-Z)</option>
-        <option value="desc">Name (Z-A)</option>
-      </select>
+    <div className={s.pageWrapper}>
+      <div className={s.filterBar}>
+        <input
+          placeholder="Search by name..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={s.searchInput}
+        />
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className={s.sortSelect}
+        >
+          <option value="">Sort by</option>
+          <option value="asc">Name (A-Z)</option>
+          <option value="desc">Name (Z-A)</option>
+        </select>
+      </div>
 
       <UserList users={displayedUsers} />
 
       {limit < filteredUsers.length && (
-        <button onClick={() => setLimit((prev) => prev + 6)}>Show more</button>
+        <button
+          onClick={() => setLimit((prev) => prev + 6)}
+          className={s.showMoreBtn}
+        >
+          Show more
+        </button>
       )}
     </div>
   );

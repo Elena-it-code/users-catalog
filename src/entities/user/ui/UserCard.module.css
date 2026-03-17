@@ -1,11 +1,12 @@
 .card {
+    height: 100%;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     padding: 20px;
     cursor: pointer;
 
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    transition: 0.3s;
 
     display: flex;
     flex-direction: column;
@@ -13,8 +14,8 @@
 }
 
 .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     border-color: #d0d0d0;
 }
 
@@ -40,9 +41,9 @@
 }
 
 .deleteBtn {
-    margin-top: 10px;
+    margin-top: auto;
     padding: 8px 12px;
-    background-color: #ff4d4f;
+    background-color: #dc3545;
     color: white;
     border: none;
     border-radius: 4px;

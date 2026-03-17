@@ -27,7 +27,7 @@ export const UserCard = ({ user }: UserCardProps) => {
       </Link>
 
       <button onClick={deleteUserHandler} className={s.deleteBtn}>
-        Delete
+        Delete Card
       </button>
     </div>
   );
