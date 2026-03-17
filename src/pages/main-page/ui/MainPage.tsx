@@ -9,9 +9,9 @@ export const MainPage = () => {
   const { users, isLoading, error } = useSelector(
     (state: RootState) => state.users,
   );
-
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('');
+  const [limit, setLimit] = useState(6);
 
   const filteredUsers = users
     .filter((u) => u.name.toLowerCase().includes(search.toLowerCase()))
@@ -20,6 +20,7 @@ export const MainPage = () => {
       if (sort === 'desc') return b.name.localeCompare(a.name);
       return 0;
     });
+  const displayedUsers = filteredUsers.slice(0, limit);
 
   useEffect(() => {
     if (users.length === 0) {
@@ -44,7 +45,11 @@ export const MainPage = () => {
         <option value="desc">Name (Z-A)</option>
       </select>
 
-      <UserList users={filteredUsers} />
+      <UserList users={displayedUsers} />
+
+      {limit < filteredUsers.length && (
+        <button onClick={() => setLimit((prev) => prev + 6)}>Show more</button>
+      )}
     </div>
   );
 };
