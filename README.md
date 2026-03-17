@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Проект: Каталог пользователей (Тестовое задание)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для отображения списка пользователей, реализованное на базе JSONPlaceholder API.
 
-Currently, two official plugins are available:
+## Основной стек технологий:
+* **React 19** + **Vite** — для быстрой сборки и разработки.
+* **Redux Toolkit** — управление состоянием (загрузка данных, фильтрация, удаление).
+* **React Router 7** — организация навигации (главная страница и профиль пользователя).
+* **TypeScript** — типизация всех уровней приложения.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Архитектурные решения:
+Проект организован по методологии **FSD (Feature-Sliced Design)**, что обеспечивает четкое разделение ответственности:
+* **app** — конфигурация хранилища (store) и роутинга.
+* **pages** — логика страниц (MainPage, UserPage).
+* **widgets** — крупные компоненты (UserList, Header).
+* **entities** — логика предметной области (слайс пользователя, карточка UserCard).
 
-## React Compiler
+Для каждого модуля настроен **Public API (index.ts)**, что скрывает внутреннюю структуру папок и обеспечивает чистоту импортов.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Реализованный функционал:
+1. **Фильтрация и сортировка**: Поиск по имени и сортировка по алфавиту (A-Z / Z-A).
+2. **Пагинация**: Отображение по 6 карточек с кнопкой "Show more".
+3. **Управление данными**: Удаление пользователя из локального стейта через Redux.
+4. **Детальный профиль**: Отображение полной информации о пользователе с переключателем дополнительного контента.
+5. **Обработка состояний**: Реализованы лоадеры во время загрузки и вывод сообщений об ошибках при сбоях сети.
 
-## Expanding the ESLint configuration
+## Дополнительно:
+* **Storybook**: Настроена витрина для компонента `UserCard`.
+* **Unit-тестирование**: Реализован тест на логику удаления в `userSlice` (используется Vitest).
+* **Deployment**: Проект задеплоен на Vercel.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Инструкция по запуску:
+1. Установка зависимостей: `npm install`
+2. Запуск проекта: `npm run dev`
+3. Запуск тестов: `npm test`
+4. Запуск Storybook: `npm run storybook`
