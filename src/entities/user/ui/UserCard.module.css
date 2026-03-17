@@ -31,6 +31,7 @@
     font-size: 0.9rem;
     word-break: break-all;
 }
+
 .city {
     margin: 8px 0 0 0;
     font-size: 0.95rem;
@@ -51,4 +52,10 @@
 
 .deleteBtn:hover {
     background-color: #ff7875;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }

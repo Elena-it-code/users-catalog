@@ -4,6 +4,7 @@ import { deleteUser } from '@/entities/user/model/userSlice.ts';
 import { useDispatch } from 'react-redux';
 import type { AppDispatch } from '@/app/store.ts';
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 type UserCardProps = {
   user: User;
@@ -19,9 +20,11 @@ export const UserCard = ({ user }: UserCardProps) => {
 
   return (
     <div className={s.card}>
-      <h3 className={s.name}>{user.name}</h3>
-      <p className={s.email}>{user.email}</p>
-      <p className={s.city}>{user.address.city}</p>
+      <Link to={`/user/${user.id}`} className={s.link}>
+        <h3 className={s.name}>{user.name}</h3>
+        <p className={s.email}>{user.email}</p>
+        <p className={s.city}>{user.address.city}</p>
+      </Link>
 
       <button onClick={deleteUserHandler} className={s.deleteBtn}>
         Delete
