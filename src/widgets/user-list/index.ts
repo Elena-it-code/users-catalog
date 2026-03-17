@@ -1,1 +1,1 @@
-export {UserList} from './ui/UserList.tsx';
+export {UserList} from './ui/UserList';

@@ -1,12 +1,15 @@
 import s from './UserPage.module.css';
-import type { AppDispatch, RootState } from '@/app/store.ts';
+import type { AppDispatch, RootState } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { deleteUser } from '@/entities/user/model/userSlice.ts';
+import { deleteUser } from '@/entities/user/model/userSlice';
 import { useState } from 'react';
+import { ROUTES } from '@/app/routes';
 
 export const UserPage = () => {
-  const users = useSelector((state: RootState) => state.users.users);
+  const { users, isLoading, error } = useSelector(
+    (state: RootState) => state.users,
+  );
   const { id } = useParams();
   const userId = Number(id);
   const navigate = useNavigate();
@@ -18,12 +21,12 @@ export const UserPage = () => {
   const goBackHandler = () => navigate(-1);
   const deleteUserHandler = () => {
     dispatch(deleteUser(userId));
-    navigate('/');
+    navigate(ROUTES.HOME);
   };
 
-  if (!user) {
-    return <h1>User not found</h1>;
-  }
+  if (isLoading) return <div className={s.loaderWrapper}>Loading...</div>;
+  if (error) return <div className={s.error}>Error: {error}</div>;
+  if (!user) return <div className={s.error}>User not found</div>;
 
   return (
     <div className={s.container}>

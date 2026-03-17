@@ -4,6 +4,16 @@
     margin: 0 auto;
 }
 
+.loaderWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    width: 100%;
+    font-size: 1.2rem;
+    color: #666;
+}
+
 .filterBar {
     display: flex;
     justify-content: center;
@@ -32,6 +42,13 @@
     cursor: pointer;
 }
 
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin: 40px 0;
+    font-weight: 500;
+}
+
 .showMoreBtn {
     display: block;
     margin: 40px auto;
@@ -42,6 +59,7 @@
     border-radius: 6px;
     cursor: pointer;
     font-weight: 600;
+    transition: background-color 0.2s;
 }
 
 .showMoreBtn:hover {

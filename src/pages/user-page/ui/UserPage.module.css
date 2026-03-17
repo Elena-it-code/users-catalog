@@ -31,12 +31,6 @@
     margin-bottom: 12px;
 }
 
-.footer {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
-}
-
 .backBtn, .showMoreBtn, .deleteBtn {
     min-width: 140px;
     height: 40px;
@@ -69,4 +63,19 @@
 
 .backBtn:hover, .showMoreBtn:hover, .deleteBtn:hover {
     opacity: 0.85;
+}
+
+.error {
+    color: #dc3545;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.loaderWrapper {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 1.2rem;
+    color: #666666;
 }

@@ -1,8 +1,8 @@
 import s from './UserCard.module.css';
 import type { User } from '@/entities';
-import { deleteUser } from '@/entities/user/model/userSlice.ts';
+import { deleteUser } from '@/entities/user/model/userSlice';
 import { useDispatch } from 'react-redux';
-import type { AppDispatch } from '@/app/store.ts';
+import type { AppDispatch } from '@/app/store';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

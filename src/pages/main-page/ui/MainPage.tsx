@@ -1,9 +1,9 @@
 import s from './MainPage.module.css';
 import { UserList } from '@/widgets/user-list';
 import { useDispatch, useSelector } from 'react-redux';
-import type { AppDispatch, RootState } from '@/app/store.ts';
+import type { AppDispatch, RootState } from '@/app/store';
 import { useEffect, useState } from 'react';
-import { fetchUsers } from '@/entities/user/model/userSlice.ts';
+import { fetchUsers } from '@/entities/user/model/userSlice';
 
 export const MainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,6 +21,7 @@ export const MainPage = () => {
       if (sort === 'desc') return b.name.localeCompare(a.name);
       return 0;
     });
+
   const displayedUsers = filteredUsers.slice(0, limit);
 
   useEffect(() => {
@@ -28,9 +29,6 @@ export const MainPage = () => {
       dispatch(fetchUsers());
     }
   }, [dispatch, users.length]);
-
-  if (isLoading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error: {error}</h1>;
 
   return (
     <div className={s.pageWrapper}>
@@ -52,9 +50,15 @@ export const MainPage = () => {
         </select>
       </div>
 
-      <UserList users={displayedUsers} />
+      {error ? (
+        <div className={s.error}>Something went wrong: {error}</div>
+      ) : isLoading ? (
+        <div className={s.loaderWrapper}>Loading users...</div>
+      ) : (
+        <UserList users={displayedUsers} />
+      )}
 
-      {limit < filteredUsers.length && (
+      {!isLoading && limit < filteredUsers.length && (
         <button
           onClick={() => setLimit((prev) => prev + 6)}
           className={s.showMoreBtn}
