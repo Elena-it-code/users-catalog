@@ -17,31 +17,56 @@
     margin-right: 5px;
 }
 
-.backBtn {
-    margin-bottom: 20px;
-    padding: 8px 16px;
-    cursor: pointer;
-    background: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #EEEEEE;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.backBtn:hover {
-    background: #e0e0e0;
+.infoBlock p {
+    margin-bottom: 12px;
+}
+
+.footer {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.backBtn, .showMoreBtn, .deleteBtn {
+    min-width: 140px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+    border: none;
+    margin: 0;
+}
+
+.backBtn {
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.showMoreBtn {
+    background-color: #4a5568;
+    color: white;
 }
 
 .deleteBtn {
-    margin-top: 10px;
-    padding: 8px 12px;
-    width: 100px;
     background-color: #dc3545;
     color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.2s;
 }
 
-.deleteBtn:hover {
-    background-color: #ff7875;
+.backBtn:hover, .showMoreBtn:hover, .deleteBtn:hover {
+    opacity: 0.85;
 }
