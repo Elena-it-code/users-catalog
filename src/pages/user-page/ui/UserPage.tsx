@@ -18,7 +18,7 @@ export const UserPage = () => {
 
   const user = users.find((u) => u.id === userId);
 
-  const goBackHandler = () => navigate(-1);
+  const goBackHandler = () => navigate(ROUTES.HOME);
   const deleteUserHandler = () => {
     dispatch(deleteUser(userId));
     navigate(ROUTES.HOME);
