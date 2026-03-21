@@ -3,8 +3,9 @@ import type { AppDispatch, RootState } from '@/app/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteUser } from '@/entities/user/model/userSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ROUTES } from '@/app/routes';
+import { fetchUsers } from '@/entities';
 
 export const UserPage = () => {
   const { users, isLoading, error } = useSelector(
@@ -16,6 +17,12 @@ export const UserPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [show, setShow] = useState(false);
 
+  useEffect(() => {
+    if (users.length === 0) {
+      dispatch(fetchUsers());
+    }
+  }, [dispatch, users.length]);
+
   const user = users.find((u) => u.id === userId);
 
   const goBackHandler = () => navigate(ROUTES.HOME);
@@ -26,25 +33,26 @@ export const UserPage = () => {
 
   if (isLoading) return <div className={s.loaderWrapper}>Loading...</div>;
   if (error) return <div className={s.error}>Error: {error}</div>;
-  if (!user) return <div className={s.error}>User not found</div>;
+
+  if (!user && !isLoading) return <div className={s.error}>User not found</div>;
 
   return (
     <div className={s.container}>
       <div className={s.content}>
-        <h1>{user.name}</h1>
+        <h1>{user?.name}</h1>
 
         <div className={s.infoBlock}>
           <p>
-            <span className={s.label}>Email:</span> {user.email}
+            <span className={s.label}>Email:</span> {user?.email}
           </p>
           <p>
-            <span className={s.label}>Phone:</span> {user.phone}
+            <span className={s.label}>Phone:</span> {user?.phone}
           </p>
           <p>
-            <span className={s.label}>Website:</span> {user.website}
+            <span className={s.label}>Website:</span> {user?.website}
           </p>
 
-          {show && (
+          {show && user && (
             <>
               <p>
                 <span className={s.label}>Username:</span> {user.username}
