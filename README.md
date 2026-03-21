@@ -1,36 +1,49 @@
-# Проект: Каталог пользователей (Тестовое задание)
+# User Catalog Project
 
-Приложение для отображения списка пользователей, реализованное на базе JSONPlaceholder API.
+A modern, scalable web application for managing a user catalog, built using the **JSONPlaceholder API**.
 
-## Основной стек технологий:
-* **React 19** + **Vite** — для быстрой сборки и разработки.
-* **Redux Toolkit** — управление состоянием (загрузка данных, фильтрация, удаление).
-* **React Router 7** — организация навигации (главная страница и профиль пользователя).
-* **TypeScript** — типизация всех уровней приложения.
+## 🚀 Tech Stack
+* **React 19** + **Vite** — High-performance development and rendering environment.
+* **Redux Toolkit** — Global state management, asynchronous data fetching, and local state updates.
+* **React Router 7** — Declarative navigation and robust history handling.
+* **TypeScript** — Static typing across all application layers for improved reliability.
 
-## Архитектурные решения:
-Проект организован по методологии **FSD (Feature-Sliced Design)**, что обеспечивает четкое разделение ответственности:
-* **app** — конфигурация хранилища (store) и роутинга.
-* **pages** — логика страниц (MainPage, UserPage).
-* **widgets** — крупные компоненты (UserList, Header).
-* **entities** — логика предметной области (слайс пользователя, карточка UserCard).
+## 🏗 Architecture (Feature-Sliced Design)
+The project strictly follows the **FSD methodology**, ensuring clear separation of concerns and high maintainability:
+* **app** — Store configuration and routing setup.
+* **pages** — Page-level composition and routing logic.
+* **entities** — Domain logic and business entities (UserCard, user state logic).
+* **shared** — Universal UI elements (Input, Select, Grid) and pure utility functions.
 
-Для каждого модуля настроен **Public API (index.ts)**, что скрывает внутреннюю структуру папок и обеспечивает чистоту импортов.
+Each module features a **Public API (index.ts)** to encapsulate internal structures and maintain clean, predictable imports.
 
-## Реализованный функционал:
-1. **Фильтрация и сортировка**: Поиск по имени и сортировка по алфавиту (A-Z / Z-A).
-2. **Пагинация**: Отображение по 6 карточек с кнопкой "Show more".
-3. **Управление данными**: Удаление пользователя из локального стейта через Redux.
-4. **Детальный профиль**: Отображение полной информации о пользователе с переключателем дополнительного контента.
-5. **Обработка состояний**: Реализованы лоадеры во время загрузки и вывод сообщений об ошибках при сбоях сети.
+## ✨ Key Features
+1. **Filtering & Sorting**: Real-time name search and alphabetical sorting (A-Z / Z-A) with memoized computations.
+2. **Pagination**: Smooth "Show more" functionality (displaying 6 cards per step).
+3. **Data Management**: Local user deletion from the Redux state.
+4. **Detailed Profile**: Comprehensive user information display with a toggle for additional data.
+5. **State Handling**: Integrated loaders and error messaging for network failures or server issues.
+6. **UX Consistency**: Predictable navigation and deep-link handling for direct page access.
 
-## Дополнительно:
-* **Storybook**: Настроена витрина для компонента `UserCard`.
-* **Unit-тестирование**: Реализован тест на логику удаления в `userSlice` (используется Vitest).
-* **Deployment**: Проект задеплоен на Vercel.
+## 🛠 Additional Tools
+* **Storybook**: UI showcase configured for the `UserCard` component.
+* **Unit Testing**: Business logic in `userSlice` (deletion) tested using **Vitest**.
+* **Deployment**: Automated hosting and deployment via **Vercel**.
 
-## Инструкция по запуску:
-1. Установка зависимостей: `npm install`
-2. Запуск проекта: `npm run dev`
-3. Запуск тестов: `npm test`
-4. Запуск Storybook: `npm run storybook`
+## 🚀 Getting Started
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+
+2. **Run the app**:
+   ```bash
+   npm run dev
+
+3. **Run Unit tests**:
+   ```bash
+   npm test
+
+4. **Launch Storybook**:
+   ```bash
+   npm run storybook
