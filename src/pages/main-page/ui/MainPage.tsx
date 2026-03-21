@@ -1,10 +1,9 @@
 import s from './MainPage.module.css';
-import { UserList } from '@/widgets/user-list';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '@/app/store';
 import { useEffect, useMemo, useState } from 'react';
-import { fetchUsers } from '@/entities';
-import { Input, Select } from '@/shared/ui';
+import { fetchUsers, UserCard } from '@/entities';
+import { Grid, Input, Select } from '@/shared/ui';
 import { getSortAndFilterUsers } from '@/shared/lib';
 
 const SORT_OPTIONS = [
@@ -58,7 +57,11 @@ export const MainPage = () => {
       {isLoading && !users.length ? (
         <div className={s.loaderWrapper}>Loading users...</div>
       ) : (
-        <UserList users={displayedUsers} />
+        <Grid>
+          {displayedUsers.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </Grid>
       )}
 
       {limit < filteredUsers.length && (
