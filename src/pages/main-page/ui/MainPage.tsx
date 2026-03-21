@@ -3,7 +3,7 @@ import { UserList } from '@/widgets/user-list';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '@/app/store';
 import { useEffect, useState } from 'react';
-import { fetchUsers } from '@/entities/user/model/userSlice';
+import { fetchUsers } from '@/entities';
 
 export const MainPage = () => {
   const dispatch = useDispatch<AppDispatch>();

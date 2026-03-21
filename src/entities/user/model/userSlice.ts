@@ -1,11 +1,6 @@
-import type { User } from '@/entities';
-import {
-  createAsyncThunk,
-  createSlice,
-  type PayloadAction,
-} from '@reduxjs/toolkit';
-
-export const BASE_URL = 'https://jsonplaceholder.typicode.com';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { User } from './types';
+import { fetchUsers } from './fetchUsers';
 
 export type UserState = {
   users: User[];
@@ -18,11 +13,6 @@ const initialState: UserState = {
   isLoading: false,
   error: null,
 };
-
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
-  const response = await fetch(`${BASE_URL}/users`);
-  return await response.json();
-});
 
 export const userSlice = createSlice({
   name: 'users',
@@ -44,7 +34,7 @@ export const userSlice = createSlice({
       })
       .addCase(fetchUsers.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.error.message || 'Failed to fetch users';
+        state.error = action.payload || 'Failed to fetch users';
       });
   },
 });
